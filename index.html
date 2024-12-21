@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Astro By Raja Sharma</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        /* Marquee for Consultation */
+        .marquee {
+            background-color: #ffcc00;
+            color: #000;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 5px 0;
+            text-align: center;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Navbar */
+        nav .navbar-brand img {
+            border-radius: 50%;
+            /* Round profile style */
+            width: 50px;
+            /* Adjust size */
+            height: 50px;
+            /* Adjust size */
+            object-fit: cover;
+        }
+
+        /* Header Section */
+        header {
+            position: relative;
+            background: black;
+            background-attachment: fixed;
+            color: #fff;
+            padding: 0;
+            text-align: center;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Rotating Logo Section */
+        .rotating-logo-container {
+            margin-top: 30px;
+            position: relative;
+            width: 400px;
+            /* Larger size for desktop */
+            height: 400px;
+            /* Larger size for desktop */
+            margin-left: auto;
+            margin-right: auto;
+            z-index: 10;
+        }
+
+        .rotating-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('logoimg.jpg') no-repeat center center/cover;
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
+
+        /* Rotate Animation */
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Rotate Animation for Mobile */
+        @media (max-width: 768px) {
+            .rotating-logo-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .rotating-logo {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        /* Button Styling */
+        header .btn {
+            font-size: 1.25rem;
+            padding: 0.75rem 2rem;
+            background-color: #ffcc00;
+            color: #000;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* About Section */
+        #about {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 15px;
+            background-color: #225997;
+        }
+
+        #about .about-text {
+            max-width: 60%;
+            font-size: 1.2rem;
+        }
+
+        #about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        #about .about-text p {
+            margin-bottom: 15px;
+        }
+
+        #about .about-img {
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        #about .about-text h3 {
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        /* Services Section */
+        #services {
+            padding: 50px 15px;
+            background-color: #ec9393;
+        }
+
+        #services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .service-card {
+            text-align: center;
+            background: #f8f8f8;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .service-card:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Carousel */
+        .carousel-inner {
+            padding: 0 15px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: #ddd;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .social-icons a {
+            color: #fff;
+            margin: 0 15px;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: #ffcc00;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            header {
+                height: auto;
+                padding: 50px 15px;
+            }
+
+            header .header-title {
+                font-size: 2.5rem;
+            }
+
+            header .header-subtitle {
+                font-size: 1.2rem;
+            }
+
+            header .btn {
+                font-size: 1.1rem;
+                padding: 0.6rem 1.5rem;
+            }
+
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #about .about-text {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            #about .about-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .service-card {
+                margin-bottom: 15px;
+                width: 100%;
+            }
+
+            #call-booking {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            #call-booking .call-text {
+                max-width: 100%;
+            }
+
+            .carousel-inner {
+                padding: 0 15px;
+            }
+
+            .carousel-item img {
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+            }
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Container for the Section */
+        .kundali-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 40px;
+            background-color: #0e0304;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        /* Left Part: Text and Info */
+        .kundali-text {
+            flex: 1;
+            padding-right: 20px;
+            max-width: 50%;
+        }
+
+        .kundali-text h2 {
+            color: #ff5722;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .kundali-text p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Price Button Section */
+        .kundali-text .price-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .kundali-text .price-button a {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .kundali-text .price-button a:hover {
+            background-color: #e64a19;
+        }
+
+        /* Right Part: Image */
+        .kundali-image {
+            flex: 1;
+            max-width: 40%;
+            text-align: center;
+        }
+
+        .kundali-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .kundali-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .kundali-text,
+            .kundali-image {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .kundali-image img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #10eeb6;
+        }
+
+        /* Main Section */
+        .product-section {
+            padding: 40px;
+            background-color: #05c7a7;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-text {
+            flex: 1;
+            padding-right: 20px;
+            max-width: 50%;
+        }
+
+        .product-text h2 {
+            color: #ff5722;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-text p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .product-text .price-button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-text .price-button a {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-text .price-button a:hover {
+            background-color: #e64a19;
+        }
+
+        /* Image Section */
+        .product-image {
+            flex: 1;
+            max-width: 40%;
+            text-align: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .product-text,
+            .product-image {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .product-image img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Main Section */
+        .product-section {
+            padding: 40px;
+            background-color: #dba554;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .product-text {
+            flex: 1;
+            padding-right: 20px;
+            max-width: 50%;
+        }
+
+        .product-text h2 {
+            color: #ff5722;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-text p {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .product-text .price-button {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-text .price-button a {
+            background-color: #ff5722;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-text .price-button a:hover {
+            background-color: #e64a19;
+        }
+
+        /* Image Section */
+        .product-image {
+            flex: 1;
+            max-width: 40%;
+            text-align: center;
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .product-text,
+            .product-image {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .product-image img {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Marquee for Consultation -->
+    <div class="marquee">
+        <span>Consult Now: 7439184361 | 100% Accurate Astrology by Raja Sharma </span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="logoo.jpg" alt="Logo"> Astro By Raja Sharma
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home">
+        <div class="container text-center">
+            <h1 class="header-title">Welcome to Astro By Raja Sharma</h1>
+            <p class="header-subtitle">Your trusted source for astrology readings and guidance</p>
+            <a href="#services" class="btn btn-light btn-lg">Get Your Reading</a>
+        </div>
+        <div class="rotating-logo-container">
+            <div class="rotating-logo"></div>
+        </div>
+    </header>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="about-text">
+            <h2>About Us</h2>
+            <p>Raja Sharma is a skilled astrologer with over +3 years of experience in providing insightful astrology,
+                palmistry, and numerology consultations. Specializing in career guidance, relationship compatibility,
+                and personal growth, Raja combines ancient wisdom with modern techniques to offer accurate and
+                personalized readings. His mission is to help you understand your life’s journey and make informed
+                decisions for a more fulfilling future.
+            </p>
+        </div>
+        <img src="rajaimg.jpg" alt="About Us" class="about-img">
+    </section>
+
+    <!-- Call Booking Section -->
+    <section id="call-booking" style="background-color: #f9f9f9; padding: 30px 15px;">
+        <div class="call-text">
+            <h2>अपने सभी सवालों के उत्तर पाइये</h2>
+            <p>यदि आप जीवन में फंसा हुआ महसूस कर रहे हैं और नहीं जानते कि क्या करें, तो Raja Sharma जी से कॉल पर बात
+                करना एक अच्छा विचार है।</p>
+            <a href="https://wa.me/919007229585" class="btn btn-lg btn-warning">कॉल बुक करें ₹300</a>
+
+        </div>
+    </section>
+
+    <section class="kundali-section">
+        <div class="kundali-text">
+            <h2>अपनी सम्पूर्ण विगतवार कुंडली बनवाए</h2>
+            <p>100% सही कुंडली</p>
+            <p>100 वर्ष तक के भविष्य की जानकारी</p>
+            <p>नवजात बालक के लिए उपयोगी</p>
+            <p>करियर/ प्रेम/ व्यवसाय/ नौकरी के बारे में जानकारी</p>
+            <p>मंगलदोष, कालशर्पदोष - जैसे अनेक दोषो की जानकारी</p>
+            <p>कुंडली की PDF पाइये।</p>
+            <div class="price-button">
+                <a href="https://wa.me/919007229585?text=कुंडली%20बनवानी%20है%20₹1100%20के%20लिए" target="_blank">कुंडली
+                    बनवाए ₹1100</a>
+            </div>
+        </div>
+        <div class="kundali-image">
+            <img src="kundali.jpg" alt="Kundali Image" width="400" height="300">
+
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>हमारी सेवाएं</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-card">
+                        <img src="palmistry.jpg" alt="Palmistry">
+                        <h3>Palmistry</h3>
+                        <p>आपके हाथ की रेखाओं के माध्यम से आपके भाग्य को समझें।</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-card">
+                        <img src="logoimg.jpg" alt="Horoscope">
+                        <h3>Horoscope Reading</h3>
+                        <p>आपके जन्म कुंडली के आधार पर आपके जीवन और भविष्य के बारे में जानकारी प्राप्त करें।</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-card">
+                        <img src="vedic.jpg" alt="Vedic Astrology">
+                        <h3>Vedic Astrology</h3>
+                        <p>अपने जीवन के सफर को समझने के लिए वेदिक ज्योतिष का प्राचीन ज्ञान जानें।</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-card">
+                        <img src="numerogy.jpg" alt="Numerology">
+                        <h3>Numerology</h3>
+                        <p>संख्याओं के माध्यम से अपने जीवन के महत्वपूर्ण पहलुओं को समझें।</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-card">
+                        <img src="astro.jpg" alt="Astrology">
+                        <h3>Astrology consultant</h3>
+                        <p>प्राचीन ज्योतिष के आधार पर आपके जीवन की स्थिति और भविष्य जानें।</p>
+                    </div>
+                </div>
+                <!-- Service 6 -->
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <img src="relation.jpg" alt="Compatibility">
+                        <h3>Relationship Compatibility</h3>
+                        <p>ज्योतिषीय अनुकूलता विश्लेषण के माध्यम से अपने रिश्तों की गतिशीलता को समझें।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <!-- Product 1: सन्तानगोपाल यंत्र -->
+        <div class="product-text">
+            <h2>लैब सर्टिफाइड यंत्र, पेंडेल और रत्न ख़रीदे</h2>
+            <p>सभी प्रोडक्ट्स पर फ्री डिलीवरी (कोलकाता)</p>
+            <h3>सन्तानगोपाल यंत्र</h3>
+            <p>जो पति पत्नी निःसंतान हो अथवा उनकी संतान बार बार बीमार रहती हो उनके लिए</p>
+            <div class="price-button">
+                <a href="https://wa.me/919007229585?text=सन्तानगोपाल%20यंत्र%20ऑर्डर%20करें%20₹551" target="_blank">अभी
+                    ख़रीदे ₹551/-</a>
+            </div>
+        </div>
+        <div class="product-image">
+            <img src="sant.jpg" alt="सन्तानगोपाल यंत्र" width="400" height="300">
+
+        </div>
+    </section>
+
+    <section class="product-section">
+        <!-- Product 2: मंगलपूजा यंत्र -->
+        <div class="product-text">
+            <h3>मंगलपूजा यंत्र</h3>
+            <p>जिनकी कुंडली में मंगल दोष हो अथवा जिनकी कुंडली में लग्नेश मंगल गृह हो उनके लिए</p>
+            <div class="price-button">
+                <a href="https://wa.me/919007229585?text=मंगलपूजा%20यंत्र%20ऑर्डर%20करें%20₹551" target="_blank">अभी
+                    ख़रीदे ₹551/-</a>
+            </div>
+        </div>
+        <div class="product-image">
+            <img src="mangal.jpg" alt="मंगलपूजा यंत्र" width="400" height="300">
+
+        </div>
+    </section>
+
+    <section class="product-section">
+        <!-- Product 3: राहु - गोमेदक -->
+        <div class="product-text">
+            <h3>राहु - गोमेदक</h3>
+            <p>जिनकी कुंडली में राहु दोष हो, या राहु की दशा चल रही हो उनके लिए</p>
+            <div class="price-button">
+                <a href="https://wa.me/919007229585?text=राहु%20गोमेदक%20ऑर्डर%20करें" target="_blank">अभी ऑर्डर
+                    करें</a>
+            </div>
+        </div>
+        <div class="product-image">
+            <img src="rahu.jpg" alt="राहु - गोमेदक" width="400" height="300">
+
+        </div>
+    </section>
+
+    <section class="product-section">
+        <!-- Product 4: मंगल - मूंगा -->
+        <div class="product-text">
+            <h3>मंगल - मूंगा</h3>
+            <p>जिनकी कुंडली में मंगल दोष हो या राशि रत्न मंगल हो उनके लिए</p>
+            <div class="price-button">
+                <a href="https://wa.me/919007229585?text=मंगल%20मूंगा%20ऑर्डर%20करें" target="_blank">अभी ऑर्डर करें</a>
+            </div>
+        </div>
+        <div class="product-image">
+            <img src="mangall.jpg" alt="मंगल - मूंगा" width="400" height="300">
+
+        </div>
+    </section>
+
+    <section class="product-section">
+        <!-- Product 5: सभी प्रकार के यंत्र और रत्न -->
+        <div class="product-text">
+            <h3>सभी प्रकार के यंत्र और रत्न ख़रीदे</h3>
+            <p>हमारे पास विभिन्न प्रकार के यंत्र और रत्न उपलब्ध हैं। आप अपनी जरूरत के अनुसार इन्हें ऑर्डर कर सकते हैं।
+            </p>
+        </div>
+        <div class="product-image">
+            <img src="ratna.jpg" alt="सभी प्रकार के यंत्र और रत्न" width="400" height="300">
+
+        </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Astro By Raja Sharma. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
