@@ -593,6 +593,141 @@
                 margin-bottom: 20px;
             }
         }
+        /* Mobile-specific styles (for devices with max-width 768px) */
+@media only screen and (max-width: 768px) {
+  .element {
+    position: fixed; /* Fixed position on mobile */
+    top: 0; /* Place it at the top of the screen */
+    left: 0; /* Align it to the left */
+    width: 100%; /* Ensure the element spans the full width */
+    z-index: 9999; /* Ensure the element stays on top of other content */
+  }
+}
+        /* Testimonial Section */
+#testimonial-section {
+    background-color: #f7f7f7;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.testimonial-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px;
+}
+
+.testimonial-carousel {
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    transition: transform 1s ease;
+}
+
+.testimonial-text {
+    font-size: 18px;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.testimonial-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.testimonial-container:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+        /* FAQ Section Styles */
+#faq {
+    background-color: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.faq-item {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.faq-question:hover {
+    background-color: #0056b3;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    font-size: 1em;
+    color: #555;
+    background-color: #f7f7f7;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+.toggle-icon {
+    font-size: 1.5em;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+/* Active state (when clicked) */
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+.faq-item.active .toggle-icon {
+    transform: rotate(45deg);
+}
+
+
     </style>
 </head>
 
@@ -607,7 +742,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="logoo.jpg" alt="Logo"> Astro By Raja Sharma
+                <img src="bgimg.jpg" alt="Logo"> Astro By Raja Sharma
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -706,7 +841,7 @@
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="service-card">
-                        <img src="logoimg.jpg" alt="Horoscope">
+                        <img src="horoscope.jpg" alt="Horoscope">
                         <h3>Horoscope Reading</h3>
                         <p>आपके जन्म कुंडली के आधार पर आपके जीवन और भविष्य के बारे में जानकारी प्राप्त करें।</p>
                     </div>
@@ -743,6 +878,36 @@
             </div>
         </div>
     </section>
+
+    <section id="testimonial-section" class="testimonial-container">
+    <h2 class="section-title">What Our Clients Say</h2>
+    <div class="testimonial-carousel">
+        <!-- Testimonial Slide 1 -->
+        <div class="testimonial-slide">
+            <p class="testimonial-text">"Raja Sharma ji ki astrology se meri zindagi mein kaafi positive changes aaye hain. Unhone meri life ko accurately predict kiya tha aur unki guidance ne meri problems ko solve kiya. Main hamesha unka shukriya ada karta hoon!"</p>
+            <p class="testimonial-author">- Vinay Kumar, Entrepreneur</p>
+        </div>
+        
+        <!-- Testimonial Slide 2 -->
+        <div class="testimonial-slide">
+            <p class="testimonial-text">"Main pehle thoda skeptical tha, lekin Raja Sharma ji ki astrology reading ne mujhe meri career aur personal life ke baare mein clarity di. Unki advice ke baad mujhe apne decisions mein confidence mila hai. Highly recommend!"</p>
+            <p class="testimonial-author">- Priya Mehta, Teacher</p>
+        </div>
+        
+        <!-- Testimonial Slide 3 -->
+        <div class="testimonial-slide">
+            <p class="testimonial-text">"Raja Sharma ji ki astrology predictions ne meri zindagi ko ek nayi direction di hai. Unhone jo bhi kaha, wo sahi sabit hua! Unka approach bohot hi professional hai aur unki readings bilkul accurate thi."</p>
+            <p class="testimonial-author">- Anil Gupta, Business Owner</p>
+        </div>
+
+        <!-- Testimonial Slide 4 -->
+        <div class="testimonial-slide">
+            <p class="testimonial-text">"Raja Sharma ji ki help se maine apne personal struggles ko samjha aur unhone mere liye ek perfect roadmap diya. Main unki advice ke according chal raha hoon aur unhone jo predictions kiye the, wo sach me accurate nikle!"</p>
+            <p class="testimonial-author">- Aarti Verma, IT Professional</p>
+        </div>
+    </div>
+</section>
+
 
     <section class="product-section">
         <!-- Product 1: सन्तानगोपाल यंत्र -->
@@ -822,6 +987,41 @@
         </div>
     </section>
 
+    <section id="faq" class="faq-container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h4>1. How accurate are astrology predictions?</h4>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <p>Our astrology predictions are based on ancient Vedic astrology techniques and are highly accurate. However, astrology serves as guidance, and personal effort is also important.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h4>2. What should I provide for a Kundali reading?</h4>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <p>For a Kundali reading, we require your birth date, time, and place of birth. This helps us create an accurate horoscope for you.</p>
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="faq-question">
+            <h4>3. How can I book a consultation?</h4>
+            <span class="toggle-icon">+</span>
+        </div>
+        <div class="faq-answer">
+            <p>You can book a consultation through our website or contact us directly via email or phone. We offer online consultations for your convenience.</p>
+        </div>
+    </div>
+</section>
+
+
 
     <!-- Footer Section -->
     <footer>
@@ -835,6 +1035,40 @@
 
     <!-- Bootstrap JS and Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        const offset = -index * 100; // Each slide takes 100% width
+        document.querySelector('.testimonial-carousel').style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        showSlide(currentIndex);
+    }
+
+    // Set interval to auto-slide every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Initialize the first slide
+    showSlide(currentIndex);
+</script>
+    <script>
+    // Get all FAQ question elements
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            // Toggle active class to show/hide the answer
+            item.classList.toggle('active');
+        });
+    });
+</script>
+
+
 
 </body>
 
