@@ -798,7 +798,18 @@
 .faq-item.active .toggle-icon {
     transform: rotate(45deg);
 }
-
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+    /* Make the body fixed on top of the screen */
+    body {
+        position: fixed;  /* Fix the body to the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;  /* Full screen height */
+        overflow: hidden;  /* Prevent scroll of body */
+        z-index: 9999;  /* Ensure it's on top */
+    }
 
     </style>
 </head>
