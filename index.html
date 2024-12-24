@@ -593,67 +593,139 @@
                 margin-bottom: 20px;
             }
         }
-        /* Mobile-specific styles (for devices with max-width 768px) */
-@media only screen and (max-width: 768px) {
-  .element {
-    position: fixed; /* Fixed position on mobile */
-    top: 0; /* Place it at the top of the screen */
-    left: 0; /* Align it to the left */
-    width: 100%; /* Ensure the element spans the full width */
-    z-index: 9999; /* Ensure the element stays on top of other content */
-  }
-}
-        /* Testimonial Section */
-#testimonial-section {
-    background-color: #f7f7f7;
-    padding: 60px 0;
+    /* Main Testimonial Section */
+.testimonial-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+/* Section Title */
 .section-title {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     color: #333;
-    margin-bottom: 40px;
-    font-weight: bold;
+    margin-bottom: 30px;
 }
 
-.testimonial-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    padding: 20px;
-}
-
+/* Testimonial Carousel */
 .testimonial-carousel {
-    display: flex;
+    position: relative;
     overflow: hidden;
-    justify-content: center;
+    width: 100%;
 }
 
 .testimonial-slide {
-    flex: 0 0 100%;
-    max-width: 100%;
-    transition: transform 1s ease;
+    display: none;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: transform 1s ease-in-out; /* Smooth transition */
 }
 
 .testimonial-text {
-    font-size: 18px;
-    font-style: italic;
+    font-size: 1.1rem;
     color: #555;
-    margin-bottom: 20px;
+    font-style: italic;
 }
 
 .testimonial-author {
-    font-size: 16px;
+    margin-top: 20px;
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #333;
+    color: #007BFF;
 }
 
-.testimonial-container:after {
-    content: '';
-    display: block;
-    clear: both;
+/* Navigation Buttons (Prev & Next) */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    font-size: 18px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 }
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: #333;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .testimonial-container {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .testimonial-slide {
+        padding: 20px;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .testimonial-author {
+        font-size: 1rem;
+    }
+
+    .prev, .next {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .testimonial-container {
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .testimonial-slide {
+        padding: 15px;
+    }
+
+    .testimonial-text {
+        font-size: 0.95rem;
+    }
+
+    .testimonial-author {
+        font-size: 0.95rem;
+    }
+
+    .prev, .next {
+        font-size: 18px;
+    }
+}
+
+      
+
+
+
         /* FAQ Section Styles */
 #faq {
     background-color: #f9f9f9;
@@ -726,7 +798,17 @@
 .faq-item.active .toggle-icon {
     transform: rotate(45deg);
 }
-
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 768px) {
+    body {
+        position: fixed;     /* Fixed positioning */
+        top: 0;              /* Position at the top of the screen */
+        left: 0;             /* Align with the left side of the screen */
+        width: 100%;         /* Full width */
+        height: 100%;        /* Full height of the screen */
+        overflow: hidden;    /* Prevent scrolling */
+        z-index: 9999;       /* Ensure it stays on top of other content */
+    }
 
     </style>
 </head>
@@ -879,21 +961,23 @@
         </div>
     </section>
 
-    <section id="testimonial-section" class="testimonial-container">
+   <section id="testimonial-section" class="testimonial-container">
     <h2 class="section-title">What Our Clients Say</h2>
+    
+    <!-- Testimonial Carousel Container -->
     <div class="testimonial-carousel">
         <!-- Testimonial Slide 1 -->
         <div class="testimonial-slide">
             <p class="testimonial-text">"Raja Sharma ji ki astrology se meri zindagi mein kaafi positive changes aaye hain. Unhone meri life ko accurately predict kiya tha aur unki guidance ne meri problems ko solve kiya. Main hamesha unka shukriya ada karta hoon!"</p>
             <p class="testimonial-author">- Vinay Kumar, Entrepreneur</p>
         </div>
-        
+
         <!-- Testimonial Slide 2 -->
         <div class="testimonial-slide">
             <p class="testimonial-text">"Main pehle thoda skeptical tha, lekin Raja Sharma ji ki astrology reading ne mujhe meri career aur personal life ke baare mein clarity di. Unki advice ke baad mujhe apne decisions mein confidence mila hai. Highly recommend!"</p>
             <p class="testimonial-author">- Priya Mehta, Teacher</p>
         </div>
-        
+
         <!-- Testimonial Slide 3 -->
         <div class="testimonial-slide">
             <p class="testimonial-text">"Raja Sharma ji ki astrology predictions ne meri zindagi ko ek nayi direction di hai. Unhone jo bhi kaha, wo sahi sabit hua! Unka approach bohot hi professional hai aur unki readings bilkul accurate thi."</p>
@@ -906,6 +990,10 @@
             <p class="testimonial-author">- Aarti Verma, IT Professional</p>
         </div>
     </div>
+
+    <!-- Carousel Navigation Buttons -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
 </section>
 
 
@@ -1036,25 +1124,37 @@
     <!-- Bootstrap JS and Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.testimonial-slide');
-    const totalSlides = slides.length;
+    let slideIndex = 0; // Initial slide index
 
-    function showSlide(index) {
-        const offset = -index * 100; // Each slide takes 100% width
-        document.querySelector('.testimonial-carousel').style.transform = `translateX(${offset}%)`;
-    }
+// Function to display the current slide
+function showSlide(n) {
+    let slides = document.querySelectorAll('.testimonial-slide');
+    
+    // Ensure the slideIndex is within bounds
+    if (n >= slides.length) { slideIndex = 0; }
+    if (n < 0) { slideIndex = slides.length - 1; }
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        showSlide(currentIndex);
-    }
+    // Hide all slides
+    slides.forEach(slide => {
+        slide.style.display = 'none';
+    });
 
-    // Set interval to auto-slide every 5 seconds
-    setInterval(nextSlide, 5000);
+    // Show the current slide
+    slides[slideIndex].style.display = 'block';
+}
 
-    // Initialize the first slide
-    showSlide(currentIndex);
+// Function to move to the next or previous slide
+function moveSlide(n) {
+    showSlide(slideIndex += n);
+}
+
+// Automatic carousel sliding every 6 seconds (slower transition)
+setInterval(function() {
+    moveSlide(1); // Move to the next slide
+}, 6000); // Change slide every 6 seconds (slow down)
+
+showSlide(slideIndex); // Display the first slide initially
+
 </script>
     <script>
     // Get all FAQ question elements
